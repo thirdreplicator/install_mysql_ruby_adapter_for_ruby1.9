@@ -1,0 +1,7 @@
+APPLICABILITY: CentOS 5.2, Ubuntu 8.10
+REQUIREMENTS: You gems should be installed here: /usr/local/lib/ruby/gems/1.9.1/gems/
+USAGE: sudo ./install_mysql_adapter
+
+
+
+

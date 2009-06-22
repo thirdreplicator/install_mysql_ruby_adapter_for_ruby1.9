@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+echo ""
+echo "*** DOWNLOADING SOURCE -- JUST IGNORE THE COMPILE ERROR ***"
+gem sources -a http://gems.github.com
+sudo gem install kwatch-mysql-ruby
+
+echo ""
+echo "*** FIXING the ERROR ***"
+# Delete the line that is preventing compilation
+sudo sed -i -e "/define ulong unsigned long/d" /usr/local/lib/ruby/gems/1.9.1/gems/kwatch-mysql-ruby-2.8.1/ext/mysql.c
+
+echo ""
+echo "*** RECOMPILING ***"
+
+# Build and install the gem.
+cd /usr/local/lib/ruby/gems/1.9.1/gems/kwatch-mysql-ruby-2.8.1
+sudo gem build mysql-ruby.gemspec
+
+echo ""
+echo "*** INSTALLING ***"
+sudo gem install mysql-ruby-2.8.1.gem
+
+echo ""
+echo "*** TESTING ***"
+echo "ruby -e \"puts (require 'mysql')\""
+export out=`ruby -e "puts (require 'mysql')"`
+echo $out 
