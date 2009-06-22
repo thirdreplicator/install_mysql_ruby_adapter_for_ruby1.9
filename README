@@ -1,7 +1,27 @@
-APPLICABILITY: CentOS 5.2, Ubuntu 8.10
-REQUIREMENTS: You gems should be installed here: /usr/local/lib/ruby/gems/1.9.1/gems/
-USAGE: sudo ./install_mysql_adapter
+MOTIVATION: The MySQL gem is a pain to install.  This script automatically installs it for Ubuntu and CentOS users
+with root access and Ruby 1.9.1.  I think it may work for Mac OS X too, but I haven't tried it. 
 
+APPLICABILITY: CentOS 5.2, Ubuntu 8.10, Ruby 1.9.1
 
+REQUIREMENTS: Ruby 1.9.1. 
+
+You need to have root access. 
+
+This gem depends upon the kwatch-mysql-ruby-2.8.1 gem, so if that one changes then this one might not work. 
+
+The source of the gems is inferred from the where your gem command lives.
+If this script can't correctly infer where the source of the mysql adapter gem source is, then you can 
+hard code it in in the script.  (Like if you have gems in your ~/.gem directory for example, I'm not sure if 
+it will work.  Please let me know.  Feel free to fork to your heart's content.)
+
+USAGE: 
+
+git clone git://github.com/thirdreplicator/install_mysql_ruby_adapter_for_ruby1.9.git
+cd install_mysql_ruby_adapter*
+sudo ./install_mysql_ruby_adapter
+
+HOPE:
+
+I hope this saves you time.  Enjoy.
 
 

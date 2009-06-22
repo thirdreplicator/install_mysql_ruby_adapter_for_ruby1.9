@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
-
 echo ""
 echo "*** DOWNLOADING SOURCE -- JUST IGNORE THE COMPILE ERROR ***"
 gem sources -a http://gems.github.com
 sudo gem install kwatch-mysql-ruby
 
+GEM_SRC="$(which gem |sed 's/\/\w*\/\w*$/\/lib\/ruby\/gems\/1.9.1\/gems/')"
+
 echo ""
 echo "*** FIXING the ERROR ***"
 # Delete the line that is preventing compilation
-sudo sed -i -e "/define ulong unsigned long/d" /usr/local/lib/ruby/gems/1.9.1/gems/kwatch-mysql-ruby-2.8.1/ext/mysql.c
+sudo sed -i -e "/define ulong unsigned long/d" $GEM_SRC/kwatch-mysql-ruby-2.8.1/ext/mysql.c
 
 echo ""
 echo "*** RECOMPILING ***"
